@@ -38,6 +38,7 @@ def predict(data):
   # Destructure data[0] and add darkPatterns key with an empty array as its value
   
   # result = [{'class' : data[0]['class'], 'darkPatterns': ['Pattern 1', 'Pattern 2']}]
+  
   result = [{**data[0], 'darkPatterns': ['Pattern 1', 'Pattern 2']}]
   
   return result
