@@ -4,7 +4,7 @@ from transformers import pipeline, BertTokenizerFast, BertForSequenceClassificat
 from bs4 import BeautifulSoup
 import time
 import re
-
+import json
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
@@ -21,20 +21,23 @@ def preProcessData(data):
   [s.extract() for s in soup(['script', 'noscript', 'style'])]
 
     # Find all div elements with text
-  div_elements = soup.find_all('div', text=True)
-
+  div_elements = soup.find_all('div')
+  # print(div_elements)
   # Extract text and class attributes from div elements
   for div in div_elements:
      # Check if the div has no child div elements
         if not div.find('div'):
-            text = div.get_text(separator=' ', strip=True)  # Combine all text into a single line with one space between words
-            text = re.sub(r'\s+', ' ', text)  # Replace multiple spaces, tabs, and newlines with a single space
-            class_attr = ' '.join(div.get('class', []))
-            if text:
-                textData.append({
-                    'text': text,
-                    'class': class_attr
-                })
+          text = div.get_text(separator=' ', strip=True)  # Combine all text into a single line with one space between words
+          text = re.sub(r'\s+', ' ', text)  # Replace multiple spaces, tabs, and newlines with a single space
+          class_attr = ' '.join(div.get('class', []))
+          if text:
+              textData.append({
+                  'text': text,
+                  'class': class_attr
+              })
+              
+  with open('tempdata.json', 'w') as file:
+    json.dump(textData, file)
   # print(textData)
   return textData
 
