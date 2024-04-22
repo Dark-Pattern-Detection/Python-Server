@@ -40,7 +40,7 @@ def create_model(bert_model, max_len=MAX_LEN):
     return model
 
 model = create_model(bert_model, MAX_LEN)
-model.load_weights("model.hdf5")
+model.load_weights("model.h5")
 
 def tokenize(data) :
     input_ids = []
@@ -141,7 +141,7 @@ def predict(data):
   start_time = time.time()
   predicted_list = []
   for i in range(len(data)):
-    score = getScore(data[i]['text'])
+    score = getScore(remove_mult_spaces(filter_chars(clean_hashtags(strip_all_entities(strip_emoji(data[i]['text']))))))
     if score == 1:
       predicted_list.append({**data[i],'label': 'Dark Pattern'})
     
