@@ -9,6 +9,8 @@ from transformers import TFBertModel
 import re, string
 import demoji
 from flask import Flask, jsonify, request
+import os
+
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
