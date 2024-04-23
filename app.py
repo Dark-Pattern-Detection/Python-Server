@@ -19,7 +19,7 @@ bert_model = TFBertModel.from_pretrained('bert-base-uncased')
 
 def create_model(bert_model, max_len=MAX_LEN):
     
-    opt = tf.keras.optimizers.Adam(learning_rate=1e-5, decay=1e-7)
+    opt = tf.keras.optimizers.Adam(learning_rate=1e-5, weight_decay=1e-7)
     loss = tf.keras.losses.CategoricalCrossentropy()
     accuracy = tf.keras.metrics.CategoricalAccuracy()
 
