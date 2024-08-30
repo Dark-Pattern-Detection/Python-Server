@@ -92,7 +92,7 @@ def remove_mult_spaces(text): # remove multiple spaces
     return re.sub("\s\s+" , " ", text)
 
 def getScore(body):
-    test_input_ids, test_attention_masks = tokenize([body], MAX_LEN)
+    test_input_ids, test_attention_masks = tokenize([body])
     score = model.predict([test_input_ids, test_attention_masks])
     print(score)
     
