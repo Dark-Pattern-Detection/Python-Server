@@ -6,3 +6,5 @@
 6. To install all the requirements in the virtual environment: `pip install -r requirements.txt`
 7. Download the model from google drive and extract it into `Python-Server`. Keep model's folder name as `model.yesno.update`. Google drive link - https://drive.google.com/drive/u/0/folders/1oWhTTD7hYn6pa_I8N1a3baj-3flqQO-m
 8. It will run the Python server on `http://localhost:3000`: `python app.py`
+
+@utsavchab local model google drive link - https://drive.google.com/drive/folders/12rfimcNY1RR-TH4wLTLC83iWnovHBhjh?usp=sharing
